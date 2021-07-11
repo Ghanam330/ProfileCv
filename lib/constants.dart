@@ -85,12 +85,12 @@ final kServicesLinks = [
 
 // projects
 final kProjectsBanner = [
-  "assets/projects/rastrant.Jpg",
-  "assets/projects/fawry.Jpg",
-  "assets/projects/hotil.Jpg",
-  "assets/projects/chat.Jpg",
-  "assets/projects/sms.Jpg",
-  "assets/projects/watch.Jpg",
+  "assets/projects/rastrant.jpg",
+  "assets/projects/fawry.jpg",
+  "assets/projects/hotil.jpg",
+  "assets/projects/chat.jpg",
+  "assets/projects/sms.jpg",
+  "assets/projects/watch.jpg",
 ];
 
 // final kProjectsIcons = [
