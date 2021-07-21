@@ -32,7 +32,7 @@ class PortfolioMobileTab extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 10.0),
               child: ProjectCard(
                 cardWidth: width < 650 ? width * 0.8 : width * 0.4,
-
+                backImage: kProjectsBanner[itemIndex],
                 projectTitle: kProjectsTitles[i],
                 projectDescription: kProjectsDescriptions[i],
 

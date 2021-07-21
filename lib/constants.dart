@@ -80,18 +80,26 @@ final kServicesLinks = [
   "https://github.com/Ghanam330"
 ];
 
-
-
-
 // projects
 final kProjectsBanner = [
-  "assets/rastrant.jpg",
-  "assets/fawry.jpg",
-  "assets/hotil.jpg",
-  "assets/chat.jpg",
-  "assets/sms.jpg",
-  "assets/watch.jpg",
+  "assets/services/rastrant.jpg",
+  "assets/services/fawry.jpg",
+  "assets/services/hotil.jpg",
+  "assets/services/chat.jpg",
+  "assets/services/sms.jpg",
+  "assets/services/watch.jpg",
 ];
+
+//
+// // projects
+// final kProjectsBanner = [
+//   "assets/rastrant.jpg",
+//   "assets/fawry.jpg",
+//   "assets/hotil.jpg",
+//   "assets/chat.jpg",
+//   "assets/sms.jpg",
+//   "assets/watch.jpg",
+// ];
 
 // final kProjectsIcons = [
 //    "assets/projects/medkit.png",
