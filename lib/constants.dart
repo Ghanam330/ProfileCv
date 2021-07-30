@@ -29,23 +29,11 @@ const kSocialLinks = [
 void launchURL(String _url) async =>
     await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
 
-// // Community
-// final kCommunityLogo = [
-//   'assets/cui.png',
-//   'assets/flutterIsl.png',
-//   'assets/dsc.png'
-// ];
-
-// final kCommunityLinks = [
-//   "https://www.comsats.edu.pk/",
-//   "https://web.facebook.com/FlutterIslamabadPakistan/",
-//   "https://dsc.community.dev/comsats-university-islamabad/"
-// ];
 
 // Tools & Tech
 final kTools = ["Android","Kotlin","Java","Flutter","Dart","Cloud DevOps","RESTful API"];
 
-final kTools1 = ["HTML", "CSS","C++","Visual Basic","Python","SQLLite"];
+final kTools1 = ["HTML", "CSS","C#","Visual Basic","Python","SQLLite"];
 
 // services
 final kServicesIcons = [
@@ -80,14 +68,24 @@ final kServicesLinks = [
   "https://github.com/Ghanam330"
 ];
 
+// // projects
+// final kProjectsBanner = [
+//   "assets/services/rastrant.jpg",
+//   "assets/services/fawry.jpg",
+//   "assets/services/hotil.jpg",
+//   "assets/services/chat.jpg",
+//   "assets/services/sms.jpg",
+//   "assets/services/watch.jpg",
+// ];
+
 // projects
 final kProjectsBanner = [
-  "assets/services/rastrant.jpg",
-  "assets/services/fawry.jpg",
-  "assets/services/hotil.jpg",
-  "assets/services/chat.jpg",
-  "assets/services/sms.jpg",
-  "assets/services/watch.jpg",
+  "assets/services/rastrant.png",
+  "assets/services/fawry.png",
+  "assets/services/hotil.png",
+  "assets/services/chat.png",
+  "assets/services/sms.png",
+  "assets/services/watch.png",
 ];
 
 //
@@ -101,17 +99,7 @@ final kProjectsBanner = [
 //   "assets/watch.jpg",
 // ];
 
-// final kProjectsIcons = [
-//    "assets/projects/medkit.png",
-//    "assets/projects/quran.png",
-//   "assets/projects/hereiam.png",
-//   "assets/projects/covid.png",
-//   "assets/projects/messenger.png",
-//   "assets/projects/flutter.png",
-//   "assets/projects/earbender.png",
-//   "assets/projects/java.png",
-//   "assets/services/open.png",
-// ];
+
 
 
 final kProjectsTitles = [
@@ -139,37 +127,60 @@ final kProjectsDescriptions = [
 ];
 
 
-//
-// final kProjectsLinks = [
-//   "https://github.com/m-hamzashakeel/MedKit-Pharmacy-App-Using-Flutter",
-//   "https://github.com/m-hamzashakeel/The_Holy_Quran_App",
-//   "https://github.com/m-hamzashakeel/Here-I-Am-Alert-App",
-//   "https://github.com/m-hamzashakeel/Covid19-Tracker-App",
-//   "https://github.com/m-hamzashakeel/Messenger-Chat-Head-Flutter-UI",
-//   "https://github.com/m-hamzashakeel/flutter.dev-Flutter-Web-Clone",
-//   "https://github.com/m-hamzashakeel/Earbender_Music_App",
-//   "https://github.com/m-hamzashakeel/FTP_GUI_Java",
-//   "https://github.com/m-hamzashakeel/My-Order-Resturant-Ordering-System",
-//   "https://github.com/m-hamzashakeel/Hidev_Web",
-// ];
-
-
-
 // Contact
 final kContactIcons = [
   Icons.home,
   Icons.phone,
   Icons.mail,
+  Image.asset("assets/whatsapp.png")
 ];
 
 final kContactTitles = [
   "Location",
   "Phone",
   "Email",
+  "WhatsApp"
 ];
 
 final kContactDetails = [
   "Cairo, Egypt",
   "(+20)01206806583",
-  "@ahmedmohamedghanam6@gmail.com"
+  "@ahmedmohamedghanam6@gmail.com",
+  ""
 ];
+
+
+
+
+const kTextColor = Color(0xFF707070);
+const kTextLightColor = Color(0xFF555555);
+
+const kDefaultPadding = 20.0;
+
+final kDefaultShadow = BoxShadow(
+  offset: Offset(0, 50),
+  blurRadius: 50,
+  color: Color(0xFF0700B1).withOpacity(0.15),
+);
+
+final kDefaultCardShadow = BoxShadow(
+  offset: Offset(0, 20),
+  blurRadius: 50,
+  color: Colors.black.withOpacity(0.1),
+);
+
+// TextField dedign
+final kDefaultInputDecorationTheme = InputDecorationTheme(
+  border: kDefaultOutlineInputBorder,
+  enabledBorder: kDefaultOutlineInputBorder,
+  focusedBorder: kDefaultOutlineInputBorder,
+);
+
+final kDefaultOutlineInputBorder = OutlineInputBorder(
+  // Maybe flutter team need to fix it on web
+  // borderRadius: BorderRadius.circular(50),
+  borderSide: BorderSide(
+    color: Color(0xFFCEE4FD),
+  ),
+);
+

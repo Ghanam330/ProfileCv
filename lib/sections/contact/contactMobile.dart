@@ -26,10 +26,12 @@ class ContactMobileTab extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           CarouselSlider.builder(
-            itemCount: 3,
+            itemCount: 4,
             itemBuilder: (BuildContext context, int itemIndex, int i) =>
                 Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10.0),
+              padding: const EdgeInsets.symmetric(
+                  vertical: 10.0
+              ),
               child: ProjectCard(
                 cardWidth: width > 480 ? width * 0.5 : width * 0.8,
                 projectIconData: kContactIcons[i],
@@ -45,7 +47,8 @@ class ContactMobileTab extends StatelessWidget {
                 autoPlayCurve: Curves.fastOutSlowIn,
                 autoPlayAnimationDuration: Duration(milliseconds: 800),
                 enableInfiniteScroll: false),
-          )
+          ),
+
         ],
       ),
     );
