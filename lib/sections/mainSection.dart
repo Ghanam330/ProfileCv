@@ -172,7 +172,7 @@ class _MainPageState extends State<MainPage> {
                   side: BorderSide(color: kPrimaryColor)),
               onPressed: () {
                 html.window.open(
-                    'https://drive.google.com/file/d/1kQwUd29XufuvKtG_kr4kc-Dp9019m8VO/view?usp=sharing',
+                    'https://drive.google.com/file/d/1L4vQSdTmg_hkr0u3gubBJD61uYtrbas-/view?usp=sharing',
                     "pdf");
               },
               child: Text(
@@ -211,7 +211,7 @@ class _MainPageState extends State<MainPage> {
                     side: BorderSide(color: kPrimaryColor)),
                 onPressed: () {
                   launchURL(
-                      "https://drive.google.com/file/d/1kQwUd29XufuvKtG_kr4kc-Dp9019m8VO/view?usp=sharing");
+                      "https://drive.google.com/file/d/1L4vQSdTmg_hkr0u3gubBJD61uYtrbas-/view?usp=sharing");
                 },
                 child: ListTile(
                   leading: Icon(
@@ -234,4 +234,4 @@ class _MainPageState extends State<MainPage> {
   }
 }
 
-//https://drive.google.com/file/d/1lnQkXzN3KIJ5PfGh5Iwgx62PF1ic6WVa/view?usp=sharing
+//https://drive.google.com/file/d/1L4vQSdTmg_hkr0u3gubBJD61uYtrbas-/view?usp=sharing
