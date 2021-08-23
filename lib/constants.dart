@@ -4,6 +4,8 @@ import 'package:url_launcher/url_launcher.dart';
 // Colors
 Color kPrimaryColor = Color(0xffC0392B);
 
+const defaultColor = Colors.cyan;
+
 // Social Media
 const kSocialIcons = [
   "https://img.icons8.com/metro/208/ffffff/facebook-new--v2.png",
@@ -53,7 +55,7 @@ final kServicesTitles = [
 ];
 
 final kServicesDescriptions = [
-  "For now, I can only develop Android Apps using Flutter, that's because I don't own a MacBook right now so can't test or debug apps for iOS. Hopefully this missing piece will be filled soon :)",
+  "For now, I can only develop Android Apps using Flutter, that's because I don't own a MacBook right now so can't loading or debug apps for iOS. Hopefully this missing piece will be filled soon :)",
   "Although I'm mainly a flutter developer but I do care about the UI/UX for my client. Hence, I also do UI designing for applications. So, feel free to ask me for getting you UI/UX for your apps",
   "Having a startup idea? Or maybe just want a prototype for your clients? With Flutter I can get you basic version of your app in no time and you are good to go for your project in future.",
   "I have been writing technical blogs on Medium for over a year now. So, I can get you technical blogs with awesome header images, interesting topics and SEO friendly.",
@@ -114,7 +116,6 @@ final kProjectsTitles = [
   "Hidev",
 ];
 final kProjectsDescriptions = [
-
   "Applying social distancing in the restaurant in places of receiving orders and waiting places to ensure a distance of one and a half meters between individuals and treat members of the same family as one individual",
   "Fawry is the leading platform in digital transformation and electronic payments in Egypt, providing financial services to customers and companies through multiple channels and more than 225,000 locations.",
   "The Panoramic Hotel is a modern, elegant 4-star hotel overlooking the sea, perfect for a romantic, charming vacation, in the enchanting setting of Taormina and the Ionian Sea.",
@@ -132,21 +133,18 @@ final kContactIcons = [
   Icons.home,
   Icons.phone,
   Icons.mail,
-  Image.asset("assets/whatsapp.png")
 ];
 
 final kContactTitles = [
   "Location",
   "Phone",
   "Email",
-  "WhatsApp"
 ];
 
 final kContactDetails = [
   "Cairo, Egypt",
   "(+20)01206806583",
   "@ahmedmohamedghanam6@gmail.com",
-  ""
 ];
 
 

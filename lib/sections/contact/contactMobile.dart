@@ -29,9 +29,7 @@ class ContactMobileTab extends StatelessWidget {
             itemCount: 4,
             itemBuilder: (BuildContext context, int itemIndex, int i) =>
                 Padding(
-              padding: const EdgeInsets.symmetric(
-                  vertical: 10.0
-              ),
+              padding: const EdgeInsets.symmetric(vertical: 10.0),
               child: ProjectCard(
                 cardWidth: width > 480 ? width * 0.5 : width * 0.8,
                 projectIconData: kContactIcons[i],
@@ -48,7 +46,6 @@ class ContactMobileTab extends StatelessWidget {
                 autoPlayAnimationDuration: Duration(milliseconds: 800),
                 enableInfiniteScroll: false),
           ),
-
         ],
       ),
     );

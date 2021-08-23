@@ -1,4 +1,5 @@
 // ignore: avoid_web_libraries_in_flutter
+import 'package:folio/them%20mode/cubit.dart';
 import 'package:universal_html/html.dart' as html;
 
 import 'package:flutter/gestures.dart';
@@ -32,7 +33,8 @@ class _MainPageState extends State<MainPage> {
     "About",
     "Services",
     "Projects",
-    "Contact"
+    "Contact",
+    // "Them Mode"
   ];
 
   final List<IconData> _sectionsIcons = [
@@ -47,6 +49,7 @@ class _MainPageState extends State<MainPage> {
     _itemScrollController.scrollTo(index: i, duration: Duration(seconds: 1));
   }
 
+  // Icons.brightness_4_outlined
   Widget sectionWidget(int i) {
     if (i == 0) {
       return HomePage();
@@ -83,6 +86,7 @@ class _MainPageState extends State<MainPage> {
           : AppBar(
               backgroundColor: Colors.transparent,
               elevation: 0.0,
+              actions: [],
             ),
       drawer: MediaQuery.of(context).size.width < 760 ? _appBarMobile() : null,
       body: Container(
@@ -184,6 +188,10 @@ class _MainPageState extends State<MainPage> {
             ),
           ),
         ),
+        SizedBox(
+          width: 10,
+        ),
+
       ],
     );
   }
@@ -227,11 +235,16 @@ class _MainPageState extends State<MainPage> {
                 ),
               ),
             ),
+
+            // them mode
+
           ],
         ),
       ),
     );
   }
 }
+
+
 
 //https://drive.google.com/file/d/1L4vQSdTmg_hkr0u3gubBJD61uYtrbas-/view?usp=sharing

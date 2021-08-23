@@ -32,6 +32,14 @@ dependencies:
   animated_text_kit: ^3.1.2
   webview_flutter: ^2.0.2
   universal_html: ^2.0.4
+  flutter_bloc: ^7.0.0
+  bloc: ^7.0.0
+  dio: ^4.0.0
+  hexcolor: ^2.0.4
+  shared_preferences: ^2.0.5
+  conditional_builder: ^1.0.2
+  flutter_spinkit: "^4.1.2"
+
 
 dev_dependencies:
   flutter_test:
