@@ -35,12 +35,12 @@ final kCommunityLogo = [
 final kTools = [
   "Flutter",
   "Dart",
-  "Python",
-  "C++",
-  "HTML",
   "Android",
   "Kotlin",
   "Java",
+  "Python",
+  "C",
+
 ];
 
 final kTools1 = ["HTML", "CSS","C#","Visual Basic","Python","SQLLite"];

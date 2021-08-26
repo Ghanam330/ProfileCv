@@ -28,7 +28,7 @@ class ContactDesktop extends StatelessWidget {
                 child: WidgetAnimator(
                   child: ProjectCard(
                     cardWidth: width < 1200 ? width * 0.25 : width * 0.2,
-                    cardHeight: width < 1200 ? height * 0.28 : height * 0.25,
+                    cardHeight: width < 1200 ? height * 0.28 : height * 0.27,
                     projectIconData: kContactIcons[index],
                     projectTitle: kContactTitles[index],
                     projectDescription: kContactDetails[index],
