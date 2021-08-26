@@ -1,7 +1,9 @@
-// ignore: avoid_web_libraries_in_flutter
-import 'package:folio/them%20mode/cubit.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/rendering.dart';
+import 'package:folio/provider/themeProvider.dart';
+import 'package:provider/provider.dart';
 import 'package:universal_html/html.dart' as html;
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:folio/animations/entranceFader.dart';
@@ -15,7 +17,6 @@ import 'package:folio/sections/services/services.dart';
 import 'package:folio/widget/arrowOnTop.dart';
 import 'package:folio/widget/footer.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -23,18 +24,17 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  ScrollController _scrollController =
-      ScrollController(initialScrollOffset: 25.0);
-  ItemScrollController _itemScrollController = ItemScrollController();
-  ItemPositionsListener _itemPositionListener = ItemPositionsListener.create();
+  ThemeProvider _themeProviders = ThemeProvider();
+  bool isPressed = false;
+  bool _isScrollingDown = false;
+  ScrollController _scrollController = ScrollController();
 
   final List<String> _sectionsName = [
-    "Home",
-    "About",
-    "Services",
-    "Projects",
-    "Contact",
-    // "Them Mode"
+    "HOME",
+    "ABOUT",
+    "SERVICES",
+    "PROJECTS",
+    "CONTACT"
   ];
 
   final List<IconData> _sectionsIcons = [
@@ -42,14 +42,26 @@ class _MainPageState extends State<MainPage> {
     Icons.person,
     Icons.settings,
     Icons.build,
+    Icons.article,
     Icons.phone,
   ];
 
   void _scroll(int i) {
-    _itemScrollController.scrollTo(index: i, duration: Duration(seconds: 1));
+    _scrollController.animateTo(
+      i == 0
+          ? 0.0
+          : i == 1
+              ? MediaQuery.of(context).size.height * 1.05
+              : i == 2
+                  ? MediaQuery.of(context).size.height * 1.98
+                  : i == 3
+                      ? MediaQuery.of(context).size.height * 2.9
+                      : MediaQuery.of(context).size.height * 4,
+      duration: Duration(seconds: 1),
+      curve: Curves.easeInOut,
+    );
   }
 
-  // Icons.brightness_4_outlined
   Widget sectionWidget(int i) {
     if (i == 0) {
       return HomePage();
@@ -62,14 +74,6 @@ class _MainPageState extends State<MainPage> {
     } else if (i == 4) {
       return Contact();
     } else if (i == 5) {
-      return SizedBox(
-        height: 40.0,
-      );
-    } else if (i == 6) {
-      return ArrowOnTop(
-        onPressed: () => _scroll(0),
-      );
-    } else if (i == 7) {
       return Footer();
     } else {
       return Container();
@@ -77,52 +81,99 @@ class _MainPageState extends State<MainPage> {
   }
 
   @override
+  void initState() {
+    _scrollController = _themeProviders.scroll;
+    _scrollController.addListener(() {
+      if (_scrollController.position.userScrollDirection ==
+          ScrollDirection.reverse) {
+        if (!_isScrollingDown) {
+          _isScrollingDown = true;
+          setState(() {});
+        }
+      }
+
+      if (_scrollController.position.userScrollDirection ==
+          ScrollDirection.forward) {
+        if (_isScrollingDown) {
+          _isScrollingDown = false;
+          setState(() {});
+        }
+      }
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    _scrollController.removeListener(() {});
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final _themeProv = Provider.of<ThemeProvider>(context);
     return Scaffold(
-      backgroundColor: Colors.black,
       extendBodyBehindAppBar: true,
-      appBar: MediaQuery.of(context).size.width > 760
-          ? _appBarTabDesktop()
-          : AppBar(
+      backgroundColor: _themeProv.lightTheme ? Colors.white : Colors.black,
+      appBar: MediaQuery.of(context).size.width < 760
+          ? AppBar(
+              iconTheme: IconThemeData(
+                  color: _themeProv.lightTheme ? Colors.black : Colors.white),
+              elevation: 0,
               backgroundColor: Colors.transparent,
-              elevation: 0.0,
-              actions: [],
-            ),
-      drawer: MediaQuery.of(context).size.width < 760 ? _appBarMobile() : null,
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: RawScrollbar(
-          controller: _scrollController,
-          thumbColor: kPrimaryColor,
-          thickness: 5.0,
-          child: ScrollablePositionedList.builder(
-            itemScrollController: _itemScrollController,
-            itemPositionsListener: _itemPositionListener,
-            itemCount: 8,
-            itemBuilder: (context, index) {
-              return sectionWidget(index);
-            },
+              actions: [
+                NavBarLogo(),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.05,
+                )
+              ],
+            )
+          : _appBarTabDesktop(_themeProv),
+      drawer: MediaQuery.of(context).size.width < 760
+          ? _appBarMobile(_themeProv)
+          : null,
+      body: Stack(
+        children: [
+          SectionsBody(
+            scrollController: _scrollController,
+            sectionsLength: _sectionsIcons.length,
+            sectionWidget: sectionWidget,
           ),
-        ),
+          _isScrollingDown
+              ? Positioned(
+                  bottom: 90,
+                  right: 0,
+                  child: EntranceFader(
+                      offset: Offset(0, 20),
+                      child: ArrowOnTop(
+                        onPressed: () => _scroll(0),
+                      )))
+              : Container()
+        ],
       ),
     );
   }
 
-  Widget _appBarActions(String childText, int index, IconData icon) {
+  Widget _appBarActions(
+      String childText, int index, IconData icon, ThemeProvider themeProvider) {
     return MediaQuery.of(context).size.width > 760
         ? EntranceFader(
-            offset: Offset(0, -20),
-            delay: Duration(seconds: 3),
-            duration: Duration(seconds: 1),
-            child: Padding(
+            offset: Offset(0, -10),
+            delay: Duration(milliseconds: 100),
+            duration: Duration(milliseconds: 250),
+            child: Container(
               padding: const EdgeInsets.all(8.0),
+              height: 60.0,
               child: MaterialButton(
                 hoverColor: kPrimaryColor,
                 onPressed: () => _scroll(index),
                 child: Text(
                   childText,
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(
+                    color:
+                        themeProvider.lightTheme ? Colors.black : Colors.white,
+                  ),
                 ),
               ),
             ),
@@ -130,44 +181,57 @@ class _MainPageState extends State<MainPage> {
         : Padding(
             padding: const EdgeInsets.all(8.0),
             child: MaterialButton(
-                hoverColor: kPrimaryColor,
-                onPressed: () => _scroll(index),
-                child: ListTile(
-                  leading: Icon(
-                    icon,
-                    color: kPrimaryColor,
-                  ),
-                  title: Text(childText),
-                )),
+              hoverColor: kPrimaryColor.withAlpha(70),
+              onPressed: () {
+                _scroll(index);
+                Navigator.pop(context);
+              },
+              child: ListTile(
+                leading: Icon(
+                  icon,
+                  color: kPrimaryColor,
+                ),
+                title: Text(childText,
+                    style: TextStyle(
+                      color: themeProvider.lightTheme
+                          ? Colors.black
+                          : Colors.white,
+                    )),
+              ),
+            ),
           );
   }
 
-  Widget _appBarTabDesktop() {
+  Widget _appBarTabDesktop(ThemeProvider _themeProv) {
     return AppBar(
       elevation: 0.0,
-      backgroundColor: Colors.transparent,
-      title: MediaQuery.of(context).size.width < 740
+      backgroundColor: _themeProv.lightTheme ? Colors.white : Colors.black,
+      title: MediaQuery.of(context).size.width < 780
           ? EntranceFader(
-              duration: Duration(seconds: 1),
-              offset: Offset(0, -20),
+              duration: Duration(milliseconds: 250),
+              offset: Offset(0, -10),
               delay: Duration(seconds: 3),
-              child: NavBarLogo())
+              child: NavBarLogo(
+                height: 20.0,
+              ))
           : EntranceFader(
-              offset: Offset(0, -20),
-              duration: Duration(seconds: 1),
-              delay: Duration(seconds: 3),
+              offset: Offset(0, -10),
+              duration: Duration(milliseconds: 250),
+              delay: Duration(milliseconds: 100),
               child: NavBarLogo(
                 height: MediaQuery.of(context).size.height * 0.035,
               ),
             ),
       actions: [
         for (int i = 0; i < _sectionsName.length; i++)
-          _appBarActions(_sectionsName[i], i, _sectionsIcons[i]),
+          _appBarActions(_sectionsName[i], i, _sectionsIcons[i], _themeProv),
         EntranceFader(
-          offset: Offset(0, -20),
-          delay: Duration(seconds: 3),
-          duration: Duration(seconds: 1),
-          child: Padding(
+          offset: Offset(0, -10),
+          delay: Duration(milliseconds: 100),
+          duration: Duration(milliseconds: 250),
+          child: Container(
+            height: 60.0,
+            width: 120.0,
             padding: const EdgeInsets.all(8.0),
             child: MaterialButton(
               hoverColor: kPrimaryColor.withAlpha(150),
@@ -180,71 +244,139 @@ class _MainPageState extends State<MainPage> {
                     "pdf");
               },
               child: Text(
-                "Resume",
+                "RESUME",
                 style: GoogleFonts.montserrat(
-                  fontWeight: FontWeight.w200,
+                  color: _themeProv.lightTheme ? Colors.black : Colors.white,
+                  fontWeight: FontWeight.w300,
                 ),
               ),
             ),
           ),
         ),
+        const SizedBox(width: 15.0),
         SizedBox(
-          width: 10,
+          height: 30.0,
+          child: Switch(
+            inactiveTrackColor: Colors.grey,
+            value: !_themeProv.lightTheme,
+            onChanged: (value) {
+              _themeProv.lightTheme = !value;
+            },
+            activeColor: kPrimaryColor,
+          ),
         ),
-
+        const SizedBox(width: 15.0),
       ],
     );
   }
 
-  Widget _appBarMobile() {
+  Widget _appBarMobile(ThemeProvider theme) {
     return Drawer(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 25.0, 0, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: NavBarLogo(
-                height: 28,
+      child: Material(
+        color: theme.lightTheme ? Colors.white : Colors.grey[900],
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 25.0, 0, 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: NavBarLogo(
+                  height: 28,
+                ),
               ),
-            ),
-            for (int i = 0; i < _sectionsName.length; i++)
-              _appBarActions(_sectionsName[i], i, _sectionsIcons[i]),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: MaterialButton(
-                hoverColor: kPrimaryColor.withAlpha(150),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                    side: BorderSide(color: kPrimaryColor)),
-                onPressed: () {
-                  launchURL(
-                      "https://drive.google.com/file/d/1L4vQSdTmg_hkr0u3gubBJD61uYtrbas-/view?usp=sharing");
-                },
-                child: ListTile(
-                  leading: Icon(
-                    Icons.book,
-                    color: Colors.red,
-                  ),
-                  title: Text(
-                    "Resume",
-                    style: GoogleFonts.montserrat(
-                      fontWeight: FontWeight.w200,
+              Divider(
+                color: theme.lightTheme ? Colors.grey[200] : Colors.white,
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.light_mode,
+                  color: kPrimaryColor,
+                ),
+                title: Text("Dark Mode",
+                    style: TextStyle(
+                        color: theme.lightTheme ? Colors.black : Colors.white)),
+                trailing: Switch(
+                  inactiveTrackColor: Colors.grey,
+                  value: !theme.lightTheme,
+                  onChanged: (value) {
+                    theme.lightTheme = !value;
+                  },
+                  activeColor: kPrimaryColor,
+                ),
+              ),
+              Divider(
+                color: theme.lightTheme ? Colors.grey[200] : Colors.white,
+              ),
+              for (int i = 0; i < _sectionsName.length; i++)
+                _appBarActions(_sectionsName[i], i, _sectionsIcons[i], theme),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: MaterialButton(
+                  hoverColor: kPrimaryColor.withAlpha(150),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                      side: BorderSide(color: kPrimaryColor)),
+                  onPressed: () {
+                    launchURL(
+                        "https://drive.google.com/file/d/1L4vQSdTmg_hkr0u3gubBJD61uYtrbas-/view?usp=sharing");
+                  },
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.book,
+                      color: Colors.red,
+                    ),
+                    title: Text(
+                      "RESUME",
+                      style: GoogleFonts.montserrat(
+                        fontWeight: FontWeight.w300,
+                        color: theme.lightTheme ? Colors.black : Colors.white,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-
-            // them mode
-
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
+class SectionsBody extends StatelessWidget {
+  final ScrollController scrollController;
+  final int sectionsLength;
+  final Widget Function(int) sectionWidget;
 
+  const SectionsBody({
+    Key key,
+    this.scrollController,
+    this.sectionsLength,
+    this.sectionWidget,
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
+      child: ListView.builder(
+        // physics: !kIsWeb ? ScrollPhysics() : NeverScrollableScrollPhysics(),
+        controller: scrollController,
+        itemCount: sectionsLength,
+        itemBuilder: (context, index) => sectionWidget(index),
+      ),
+    );
+  }
+}
 
-//https://drive.google.com/file/d/1L4vQSdTmg_hkr0u3gubBJD61uYtrbas-/view?usp=sharing
+// onPointerSignal: (ps) {
+//           if (ps is PointerScrollEvent) {
+//             final newOffset = scrollController.offset + ps.scrollDelta.dy;
+//             if (ps.scrollDelta.dy.isNegative) {
+//               scrollController.jumpTo(math.max(0, newOffset));
+//             } else {
+//               scrollController.jumpTo(math.min(
+//                   scrollController.position.maxScrollExtent, newOffset));
+//             }
+//           }
+//         },

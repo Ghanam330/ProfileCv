@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:folio/animations/bottomAnimation.dart';
+import 'package:folio/widget/customBtn.dart';
+import 'package:folio/widget/customTextHeading.dart';
 import 'package:folio/widget/projectCard.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:folio/constants.dart';
 
 class PortfolioDesktop extends StatelessWidget {
@@ -15,20 +16,11 @@ class PortfolioDesktop extends StatelessWidget {
           horizontal: width * 0.02, vertical: height * 0.02),
       child: Column(
         children: [
-          Text(
-            "\nPortfolio",
-            style: GoogleFonts.montserrat(
-              fontSize: height * 0.06,
-              fontWeight: FontWeight.w100,
-              letterSpacing: 1.0,
-            ),
-          ),
-          Text(
-            "Here are few samples of my previous work :)\n\n",
-            style: GoogleFonts.montserrat(fontWeight: FontWeight.w200),
-          ),
+          CustomSectionHeading(text: "\nPortfolio"),
+          CustomSectionSubHeading(
+              text: "Here are few samples of my previous work :)\n\n"),
           SizedBox(
-            height: width > 1200 ? height * 0.45 : width * 0.2,
+            height: width > 1200 ? height * 0.45 : width * 0.21,
             child: ListView.separated(
               padding: EdgeInsets.symmetric(vertical: 20.0),
               scrollDirection: Axis.horizontal,
@@ -41,44 +33,27 @@ class PortfolioDesktop extends StatelessWidget {
               itemBuilder: (context, index) {
                 return WidgetAnimator(
                   child: ProjectCard(
-                    cardWidth: width < 1200 ? width * 0.25 : width * 0.35,
-                    cardHeight: width < 1200 ? height * 0.28 : height * 0.1,
+                    cardWidth: width < 1200 ? width * 0.3 : width * 0.35,
+                    cardHeight: width < 1200 ? height * 0.32 : height * 0.1,
                     backImage: kProjectsBanner[index],
                     // projectIcon: kProjectsIcons[index],
                     projectTitle: kProjectsTitles[index],
                     projectDescription: kProjectsDescriptions[index],
-                     // projectIcon: kProjectsIcons[index],
                     // projectLink: kProjectsLinks[index],
-                    bottomWidget: index == 1
-                        ? Image.network(
-                            "https://img.icons8.com/material-sharp/384/ffffff/google-play.png",
-                            height: height * 0.04,
-                          )
-                        : Container(),
                   ),
                 );
               },
-              itemCount: 6,
+              itemCount: 4,
             ),
           ),
           SizedBox(
             height: height * 0.02,
           ),
-          MaterialButton(
-            hoverColor: kPrimaryColor.withAlpha(150),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0),
-                side: BorderSide(color: kPrimaryColor)),
-            onPressed: () {
-              launchURL("https://github.com/Ghanam330");
-            },
-            child: Text(
-              "See More",
-              style: GoogleFonts.montserrat(
-                fontWeight: FontWeight.w200,
-              ),
-            ),
-          ),
+          OutlinedCustomBtn(
+              btnText: "See More",
+              onPressed: () {
+                launchURL("https://github.com/mhmzdev");
+              })
         ],
       ),
     );

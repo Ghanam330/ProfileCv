@@ -1,32 +1,26 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:folio/constants.dart';
+import 'package:folio/provider/themeProvider.dart';
+import 'package:folio/widget/customTextHeading.dart';
 import 'package:folio/widget/projectCard.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class ContactMobileTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final _themeProvider = Provider.of<ThemeProvider>(context);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Container(
       child: Column(
         children: [
-          Text(
-            "\nContact",
-            style: GoogleFonts.montserrat(
-              fontSize: height * 0.06,
-              fontWeight: FontWeight.w100,
-              letterSpacing: 1.0,
-            ),
-          ),
-          Text(
-            "Let's get in touch and build something together :)\n\n",
-            style: GoogleFonts.montserrat(fontWeight: FontWeight.w200),
-            textAlign: TextAlign.center,
-          ),
+          CustomSectionHeading(text: "\nGet in Touch"),
+          CustomSectionSubHeading(
+              text: "Let's build something together :)\n\n"),
           CarouselSlider.builder(
-            itemCount: 4,
+            itemCount: 3,
             itemBuilder: (BuildContext context, int itemIndex, int i) =>
                 Padding(
               padding: const EdgeInsets.symmetric(vertical: 10.0),

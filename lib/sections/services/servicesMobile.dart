@@ -1,30 +1,24 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:folio/constants.dart';
+import 'package:folio/provider/themeProvider.dart';
+import 'package:folio/sections/services/servicesDesktop.dart';
+import 'package:folio/widget/customTextHeading.dart';
 import 'package:folio/widget/serviceCard.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class ServiceMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final _themeProvider = Provider.of<ThemeProvider>(context);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Container(
       child: Column(
         children: [
-          Text(
-            "\nWhat I Do",
-            style: GoogleFonts.montserrat(
-              fontSize: height * 0.06,
-              fontWeight: FontWeight.w100,
-              letterSpacing: 1.0,
-            ),
-          ),
-          Text(
-            "I may not be perfect, but I'm surely of some help :)\n\n",
-            textAlign: TextAlign.center,
-            style: GoogleFonts.montserrat(fontWeight: FontWeight.w200),
-          ),
+          CustomSectionHeading(text: "\nWhat I Do"),
+          CustomSectionSubHeading(
+              text: "I may not be perfect, but I'm surely of some help :)\n\n"),
           CarouselSlider.builder(
             itemCount: 5,
             itemBuilder: (BuildContext context, int itemIndex, int i) =>
@@ -36,10 +30,17 @@ class ServiceMobile extends StatelessWidget {
                 serviceTitle: kServicesTitles[i],
                 serviceDescription: kServicesDescriptions[i],
                 serviceLink: kServicesLinks[i],
+                cardBack: ServiceCardBackWidget(
+                  serviceTitle: kServicesTitles[i],
+                  serviceDesc: kServicesDescriptions[i],
+                  themeProvider: _themeProvider,
+                  height: height,
+                  width: width,
+                ),
               ),
             ),
             options: CarouselOptions(
-                height: height * 0.45,
+                height: width < 450 ? height * 0.4 : height * 0.4,
                 autoPlay: true,
                 autoPlayInterval: Duration(seconds: 5),
                 enlargeCenterPage: true,

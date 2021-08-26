@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // Colors
-Color kPrimaryColor = Color(0xffC0392B);
-
-const defaultColor = Colors.cyan;
+const Color kPrimaryColor = Color(0xffC0392B);
 
 // Social Media
 const kSocialIcons = [
@@ -21,22 +19,31 @@ const kSocialLinks = [
   "https://twitter.com/AhmedGhanam0120",
   "https://www.linkedin.com/in/ahmed-mohamed-a67100193",
   "https://github.com/Ghanam330",
-
 ];
-
-
-
 
 // URL Launcher
 void launchURL(String _url) async =>
     await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
 
+// Community
+final kCommunityLogo = [
+  'assets/dsc.png'
+];
+
 
 // Tools & Tech
-final kTools = ["Android","Kotlin","Java","Flutter","Dart","Cloud DevOps","RESTful API"];
+final kTools = [
+  "Flutter",
+  "Dart",
+  "Python",
+  "C++",
+  "HTML",
+  "Android",
+  "Kotlin",
+  "Java",
+];
 
 final kTools1 = ["HTML", "CSS","C#","Visual Basic","Python","SQLLite"];
-
 // services
 final kServicesIcons = [
   "assets/services/app.png",
@@ -54,12 +61,20 @@ final kServicesTitles = [
   "Open Source - GitHub",
 ];
 
+// final kServicesDescriptions = [
+//   "For now, I can only develop Android Apps using Flutter, that's because I don't own a MacBook right now so can't test or debug apps for iOS. Hopefully this missing piece will be filled soon :)",
+//   "Although I'm mainly a flutter developer but I do care about the UI/UX for my client. Hence, I also do UI designing for applications. So, feel free to ask me for getting you UI/UX for your apps",
+//   "Having a startup idea? Or maybe just want a prototype for your clients? With Flutter I can get you basic version of your app in no time and you are good to go for your project in future.",
+//   "I have been writing technical blogs on Medium for over a year now. So, I can get you technical blogs with awesome header images with interesting topics.\nMy Medium profile @mhamzadev",
+//   "Working as open source contributor on GitHub with 200+ stars and numerous forks on various projects liked and shared by other developers.\nMy GitHub Profile @mhmzdev",
+// ];
+
 final kServicesDescriptions = [
-  "For now, I can only develop Android Apps using Flutter, that's because I don't own a MacBook right now so can't loading or debug apps for iOS. Hopefully this missing piece will be filled soon :)",
-  "Although I'm mainly a flutter developer but I do care about the UI/UX for my client. Hence, I also do UI designing for applications. So, feel free to ask me for getting you UI/UX for your apps",
-  "Having a startup idea? Or maybe just want a prototype for your clients? With Flutter I can get you basic version of your app in no time and you are good to go for your project in future.",
-  "I have been writing technical blogs on Medium for over a year now. So, I can get you technical blogs with awesome header images, interesting topics and SEO friendly.",
   "Android app development via Flutter\n- Splash Screen\n- Firebase Auth/Cloud\n- REST APIs\n- Maps integration and more...!",
+  "Modern UI/UX Designing\n- Adobe XD\n- Mobile & Web designs\n- Interactive UI designs\n- Responsiveness\n- Promo Videos and more..!",
+  "Rapid Prototype via Flutter\n- Working MVP\n- Quick & Working prototype",
+  "Technical Blog writing\n- Medium blogs\n- Soothing header images\n- Researched topics and more..!",
+  "Open source GitHub Projects\n- Awesome README.md\n- Well documented\n- Header images and more...!",
 ];
 
 final kServicesLinks = [
@@ -70,42 +85,20 @@ final kServicesLinks = [
   "https://github.com/Ghanam330"
 ];
 
-// // projects
-// final kProjectsBanner = [
-//   "assets/services/rastrant.jpg",
-//   "assets/services/fawry.jpg",
-//   "assets/services/hotil.jpg",
-//   "assets/services/chat.jpg",
-//   "assets/services/sms.jpg",
-//   "assets/services/watch.jpg",
-// ];
-
 // projects
 final kProjectsBanner = [
-  "assets/services/rastrant.png",
-  "assets/services/fawry.png",
-  "assets/services/hotil.png",
-  "assets/services/chat.png",
-  "assets/services/sms.png",
-  "assets/services/watch.png",
+  "assets/projects/rastrant.png",
+  "assets/projects/fawry.png",
+  "assets/projects/hotil.png",
+  "assets/projects/chat.png",
+  "assets/projects/sms.png",
+  "assets/projects/watch.png",
 ];
-
-//
-// // projects
-// final kProjectsBanner = [
-//   "assets/rastrant.jpg",
-//   "assets/fawry.jpg",
-//   "assets/hotil.jpg",
-//   "assets/chat.jpg",
-//   "assets/sms.jpg",
-//   "assets/watch.jpg",
-// ];
-
 
 
 
 final kProjectsTitles = [
-  "Rastrant",
+  "Restaurant",
   "Fawry",
   "Hotel",
   "ChatApp",
@@ -115,6 +108,8 @@ final kProjectsTitles = [
   "File Transfer Protocol",
   "Hidev",
 ];
+
+
 final kProjectsDescriptions = [
   "Applying social distancing in the restaurant in places of receiving orders and waiting places to ensure a distance of one and a half meters between individuals and treat members of the same family as one individual",
   "Fawry is the leading platform in digital transformation and electronic payments in Egypt, providing financial services to customers and companies through multiple channels and more than 225,000 locations.",
@@ -126,6 +121,7 @@ final kProjectsDescriptions = [
   "GIt was my End semester project i.e. creating this FTP having a user interface in Java. It simply sends file from Client to Server but not the other way around.",
   "Its my end semester project for a course Web Technologies. The whole design I developed here is an inspiration from my favortie Flutter Developer Marcin Szałek and his blog Fidev."
 ];
+
 
 
 // Contact
@@ -144,41 +140,5 @@ final kContactTitles = [
 final kContactDetails = [
   "Cairo, Egypt",
   "(+20)01206806583",
-  "@ahmedmohamedghanam6@gmail.com",
+  "ahmedmohamedghanam6@gmail.com",
 ];
-
-
-
-
-const kTextColor = Color(0xFF707070);
-const kTextLightColor = Color(0xFF555555);
-
-const kDefaultPadding = 20.0;
-
-final kDefaultShadow = BoxShadow(
-  offset: Offset(0, 50),
-  blurRadius: 50,
-  color: Color(0xFF0700B1).withOpacity(0.15),
-);
-
-final kDefaultCardShadow = BoxShadow(
-  offset: Offset(0, 20),
-  blurRadius: 50,
-  color: Colors.black.withOpacity(0.1),
-);
-
-// TextField dedign
-final kDefaultInputDecorationTheme = InputDecorationTheme(
-  border: kDefaultOutlineInputBorder,
-  enabledBorder: kDefaultOutlineInputBorder,
-  focusedBorder: kDefaultOutlineInputBorder,
-);
-
-final kDefaultOutlineInputBorder = OutlineInputBorder(
-  // Maybe flutter team need to fix it on web
-  // borderRadius: BorderRadius.circular(50),
-  borderSide: BorderSide(
-    color: Color(0xFFCEE4FD),
-  ),
-);
-
