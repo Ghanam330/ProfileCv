@@ -140,5 +140,5 @@ final kContactTitles = [
 final kContactDetails = [
   "Cairo, Egypt",
   "(+20)01206806583",
-  "ahmedmohamedghanam6@gmail.com",
+  "ahmedmohamedghanam6@gmail",
 ];
