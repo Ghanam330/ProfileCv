@@ -21,7 +21,7 @@ class Footer extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             AdaptiveText(
-              "© All Right Reservered by Ahmed Mohamed Ghanam ",
+              "© All Right Reserved by Ahmed Mohamed Ghanam ",
               style: GoogleFonts.montserrat(
                 fontWeight: FontWeight.w300,
                 color: _themeProvider.lightTheme ? Colors.black : Colors.white,

@@ -178,7 +178,7 @@ class ServiceCardBackWidget extends StatelessWidget {
             color: kPrimaryColor,
             onPressed: () => showDialog(
                 context: context,
-                builder: (contecxt) => AlertDialog(
+                builder: (context) => AlertDialog(
                       backgroundColor: _themeProvider.lightTheme
                           ? Colors.white
                           : Colors.grey[900],
