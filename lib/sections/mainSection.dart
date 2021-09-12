@@ -7,7 +7,7 @@ import 'package:universal_html/html.dart' as html;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:folio/animations/entranceFader.dart';
-import 'package:folio/constants.dart';
+import 'package:folio/home/constants.dart';
 import 'package:folio/sections/about/about.dart';
 import 'package:folio/sections/contact/contact.dart';
 import 'package:folio/sections/home/home.dart';

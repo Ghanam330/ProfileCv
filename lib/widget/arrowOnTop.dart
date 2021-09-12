@@ -1,4 +1,4 @@
-import 'package:folio/constants.dart';
+import 'package:folio/home/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:folio/provider/themeProvider.dart';
 import 'package:provider/provider.dart';

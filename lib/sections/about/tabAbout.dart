@@ -5,7 +5,7 @@ import 'package:folio/widget/customTextHeading.dart';
 import 'package:provider/provider.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:flutter/material.dart';
-import 'package:folio/constants.dart';
+import 'package:folio/home/constants.dart';
 import 'package:folio/widget/aboutMeMetaData.dart';
 import 'package:folio/widget/communityIconBtn.dart';
 import 'package:folio/widget/toolsTechWidget.dart';

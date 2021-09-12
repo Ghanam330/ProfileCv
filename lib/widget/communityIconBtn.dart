@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:folio/constants.dart';
+import 'package:folio/home/constants.dart';
 
 class CommunityIconBtn extends StatelessWidget {
   final String icon;

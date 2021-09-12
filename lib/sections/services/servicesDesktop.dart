@@ -10,7 +10,7 @@ import 'package:folio/widget/customTextHeading.dart';
 import 'package:folio/widget/serviceCard.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:folio/constants.dart';
+import 'package:folio/home/constants.dart';
 import 'package:provider/provider.dart';
 
 class ServiceDesktop extends StatefulWidget {
