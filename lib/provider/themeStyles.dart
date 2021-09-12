@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:folio/constants.dart';
+import 'package:folio/home/constants.dart';
 
 class ThemeStyles {
   static ThemeData themeData(bool lightTheme, BuildContext buildContext) {
