@@ -6,8 +6,6 @@ import 'package:folio/sections/serviceDetails/serviceDetails.dart';
 import 'package:provider/provider.dart';
 
 
-
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

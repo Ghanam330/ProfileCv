@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:url_strategy/url_strategy.dart';
-import 'home_screen.dart';
-import '../provider/themeProvider.dart';
-import '../provider/themeStyles.dart';
+import 'home/home_screen.dart';
+import 'provider/themeProvider.dart';
+import 'provider/themeStyles.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
