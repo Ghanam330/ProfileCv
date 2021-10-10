@@ -57,10 +57,30 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/
-    - assets/fonts/
-    - assets/services/
-    - assets/projects/
+    - assets/1.jpg
+    - assets/ahmed.png
+    - assets/ahmed2.png
+    - assets/dsc.png
+    - assets/fonts/agustina.otf
+    - assets/fonts/montserrat.ttf
+    - assets/hi.gif
+    - assets/projects/android.png
+    - assets/projects/chat.png
+    - assets/projects/fawry.png
+    - assets/projects/flutter.png
+    - assets/projects/hotil.png
+    - assets/projects/java.png
+    - assets/projects/login.jpg
+    - assets/projects/rastrant.png
+    - assets/projects/sms.png
+    - assets/projects/watch.png
+    - assets/services/app.png
+    - assets/services/blog.png
+    - assets/services/fiverr.png
+    - assets/services/open.png
+    - assets/services/open_b.png
+    - assets/services/rapid.png
+    - assets/services/ui.png
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
