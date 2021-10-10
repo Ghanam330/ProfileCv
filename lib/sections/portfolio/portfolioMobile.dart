@@ -20,15 +20,15 @@ class PortfolioMobileTab extends StatelessWidget {
             itemCount: 10,
             itemBuilder: (BuildContext context, int itemIndex, int i) =>
                 Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15.0),
-              child: ProjectCard(
-                cardWidth: width < 650 ? width * 0.8 : width * 0.4,
-                // projectIcon: kProjectsIcons[i],
-                projectTitle: kProjectsTitles[i],
-                projectDescription: kProjectsDescriptions[i],
-                // projectLink: kProjectsLinks[i],
-              ),
-            ),
+                  padding: const EdgeInsets.symmetric(vertical: 15.0),
+                  child: ProjectCard(
+                    cardWidth: width < 650 ? width * 0.8 : width * 0.4,
+                    // projectIcon: kProjectsIcons[i],
+                    projectTitle: kProjectsTitles[i],
+                    projectDescription: kProjectsDescriptions[i],
+                    // projectLink: kProjectsLinks[i],
+                  ),
+                ),
             options: CarouselOptions(
                 height: height * 0.4,
                 autoPlay: true,
