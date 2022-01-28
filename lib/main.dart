@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:folio/sections/chat/chat_mobile.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'home/home_screen.dart';
 import 'provider/themeProvider.dart';
@@ -36,6 +37,7 @@ class _SplachScreenState extends State<SplachScreen> {
       title: 'Ahmed',
       theme: ThemeStyles.themeData(_themeProvider.lightTheme, context),
       home: HomeScreenLoading(),
+      // home: ChatMobile(),
     );
   }
 }

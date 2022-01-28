@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:folio/provider/themeProvider.dart';
+import 'package:folio/sections/chat/chat.dart';
 import 'package:provider/provider.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:flutter/gestures.dart';
@@ -34,7 +35,8 @@ class _MainPageState extends State<MainPage> {
     "ABOUT",
     "SERVICES",
     "PROJECTS",
-    "CONTACT"
+    "ChatMe",
+    "CONTACT",
   ];
 
   final List<IconData> _sectionsIcons = [
@@ -43,6 +45,7 @@ class _MainPageState extends State<MainPage> {
     Icons.settings,
     Icons.build,
     Icons.article,
+    Icons.phone,
     Icons.phone,
   ];
 
@@ -72,8 +75,10 @@ class _MainPageState extends State<MainPage> {
     } else if (i == 3) {
       return Portfolio();
     } else if (i == 4) {
-      return Contact();
+      return ChatPage();
     } else if (i == 5) {
+      return Contact();
+    } else if (i == 6) {
       return Footer();
     } else {
       return Container();

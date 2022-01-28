@@ -17,12 +17,12 @@ class ThemeStyles {
           )
         // Dark Theme
         : ThemeData(
-            brightness: Brightness.dark,
             primarySwatch: Colors.red,
+            brightness: Brightness.dark,
             primaryColorDark: kPrimaryColor,
             primaryColor: kPrimaryColor,
-            accentColor: kPrimaryColor,
-            highlightColor: kPrimaryColor,
+            accentColor: Colors.white,
+            highlightColor: Colors.white,
             canvasColor: Colors.white,
           );
   }
