@@ -1,32 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:folio/home/constants.dart';
-import 'package:folio/provider/themeProvider.dart';
-import 'package:folio/widget/adaptiveText.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
+import 'package:folio/constants.dart';
 
 class Footer extends StatelessWidget {
+  const Footer({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    final _themeProvider = Provider.of<ThemeProvider>(context);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Container(
       margin: EdgeInsets.fromLTRB(0, height * 0.05, 0, 0),
       height: height * 0.07,
       width: width,
-      color: _themeProvider.lightTheme ? Colors.white : Colors.grey[900],
       child: Center(
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            AdaptiveText(
-              "© All Right Reserved by Ahmed Mohamed Ghanam ",
-              style: GoogleFonts.montserrat(
-                fontWeight: FontWeight.w300,
-                color: _themeProvider.lightTheme ? Colors.black : Colors.white,
-              ),
+            const Text(
+              "Developed in 💙 with ",
             ),
+            InkWell(
+              onTap: () => openURL("https://www.facebook.com/profile.php?id=100011744910238"),
+              child: const Text(
+                "Ahmed Ghanam",
+                style: TextStyle(color: Colors.blue),
+              ),
+            )
           ],
         ),
       ),
